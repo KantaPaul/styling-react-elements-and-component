@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import MyClass from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -48,15 +48,16 @@ class App extends Component {
   }
 
   render() {
-    let button = {
-      backgroundColor: '#333',
-      color: '#fff',
-      padding: '15px 30px',
-      border: '1px sold #333',
-      cursor: 'pointer',
-    }
+    // let button = {
+    //   backgroundColor: '#333',
+    //   color: '#fff',
+    //   padding: '15px 30px',
+    //   border: '1px sold #333',
+    //   cursor: 'pointer',
+    // }
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPerson) {
       persons = (
@@ -79,23 +80,30 @@ class App extends Component {
           })}
         </div>
       );
-      button.backgroundColor = 'red'
+      // button.backgroundColor = 'red'
+      btnClass = MyClass.red;
     }
 
     // let classes = ['red', 'bold'].join(' ');
     let classes = [];
+    // if (this.state.persons.length <= 2) {
+    //   classes.push('red')
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   classes.push('bold')
+    // }
     if (this.state.persons.length <= 2) {
-      classes.push('red')
+      classes.push(MyClass.red)
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold')
+      classes.push(MyClass.bold)
     }
 
     return (
-      <div className="App">
+      <div className={MyClass.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is really working!</p>
-        <button onClick={this.personHandler} style={button}>{this.state.showPerson === true ? 'Hide Me' : 'Show Me'}</button>
+        <button onClick={this.personHandler} className={btnClass}>{this.state.showPerson === true ? 'Hide Me' : 'Show Me'}</button>
         
         {/* {
           this.state.showPerson === true ? 
